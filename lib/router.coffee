@@ -3,4 +3,8 @@ Router.configure
   loadingTemplate: 'loading'
   waitOn: -> Meteor.subscribe('articles')
 
-Router.route('/', name: 'articleIndex')
+Router.route '/',
+  name: 'articleIndex'
+Router.route '/articles/:_id',
+  name: 'articleShow'
+  data: -> Articles.findOne(@params._id)
