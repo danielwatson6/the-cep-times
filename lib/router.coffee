@@ -1,5 +1,6 @@
 Router.configure
   layoutTemplate: 'layout'
-  waitOn: -> Meteor.subscribe('posts')
+  loadingTemplate: 'loading'
+  waitOn: -> Meteor.subscribe('articles')
 
 Router.route('/', name: 'articleIndex')
