@@ -9,6 +9,8 @@ Router.route '/',
 Router.route '/articles/:_id',
   name: 'articleShow'
   data: -> Articles.findOne(@params._id)
+Router.route '/admin',
+  name: 'admin'
 
 # Hook to show 404 whenever the object is falsy
 Router.onBeforeAction('dataNotFound', only: 'articleShow')
