@@ -1,3 +1,7 @@
 template(name="articleIndex")
-  each articles
-    +articleItem
+  +carousel
+  .articles.row
+    .col-md-8
+      each articles
+        +articleItem
+    .col-md-4
