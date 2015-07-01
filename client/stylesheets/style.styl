@@ -14,12 +14,24 @@ centerize()
   margin-left auto
   margin-right auto
 
+category-circle()
+  width 35px
+  height @width
+  border-radius (@width / 2)
+  behavior url(PIE.htc) // IE8 support
+  text-align center
+  padding-top 10px
+  color #fff
+  opacity 1
+  &:hover
+    opacity 0.7
+
 // Navbar declarations
 
 .navbar
   height 60px
-  // Remove spacing between default and admin navbars
-  margin-bottom 0
+  margin-bottom 0 // Remove spacing between default and admin navbars
+  
   // Logo
   .navbar-brand
     padding-top 15px
@@ -27,24 +39,13 @@ centerize()
       max-height 30px
 
 ul.navbar-right
-  // Compensate for bottom space
-  padding-top 1px
-  // Spacing between circles
+  padding-top 10px
+  
   a
     padding 10px
     padding-right 0
-    // Roundness
-    .navbar-circle
-      width 35px
-      height @width
-      border-radius (@width / 2)
-      behavior url(PIE.htc) // IE8 support
-      text-align center
-      padding-top 10px
-      color #fff
-      opacity 1
-      &:hover
-        opacity 0.7
+    .category-circle
+      category-circle()
 
 // Admin declarations
 
@@ -53,6 +54,7 @@ ul.navbar-right
   border-radius 0
   height 70px
   background-color #333
+  
   #login-buttons
     margin-top 25px
     a.login-link-text
@@ -67,19 +69,22 @@ ul.navbar-right
 
 // Carousel declarations
 
-carousel-width = 960px
+carousel-width = 1140px
 carousel-height = 610px
 
 .carousel
-  max-width carousel-width
-  max-height carousel-height
+  width carousel-width
+  height carousel-height
   centerize()
+  
   .carousel-inner .item img
-    width 960px
-    max-height 610px
+    width carousel-width
+    height carousel-height
+  
   .carousel-button
     position relative
     top -60px
+  
   .carousel-title
     text-align center
     position relative
@@ -89,6 +94,7 @@ carousel-height = 610px
     h3
       padding 10px
       font-weight normal
+  
   .carousel-control
     background-image none
     opacity .5
@@ -103,11 +109,19 @@ carousel-height = 610px
 // Articles
 
 .article
-  a
-    color #000
-    text-decoration none
-    h2
-      font-weight normal
+  
+  .article-header
+    a.title
+      float left
+      color #000
+      text-decoration none
+      h2
+        font-weight normal
+    .category
+      float right
+      .category-circle
+        category-circle()
+  
   .author-img
     width 60px
     height @width
@@ -115,7 +129,7 @@ carousel-height = 610px
     box-shadow 0 0 5px rgba(0, 0, 0, .6)
     img
       opacity 0
+  
   img.carousel-img
     width 100%
     max-height 425px
-

@@ -12,15 +12,6 @@ template(name="navbar")
           img(src="/images/logos/navbar_logo.png")
       #collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
-          script.
-            insertCircle({href: '/', fa: 'home', color: colors.home});
-            insertCircle({href: '#', fa: 'flash', color: colors.live});
-            insertCircle({href: '#', fa: 'gavel', color: colors.debate});
-            insertCircle({href: '#', fa: 'music', color: colors.band});
-            insertCircle({href: '#', fa: 'futbol-o', color: colors.sports});
-            insertCircle({href: '#', fa: 'leaf', color: colors.clara});
-            insertCircle({href: '#', fa: 'reorder', color: colors.events});
-            insertCircle({href: '#', fa: 'calendar-o', color: colors.calendar});
-            insertCircle({href: '#', fa: 'image', color: colors.gallery});
-            insertCircle({href: '#', fa: 'pencil', color: colors.writers});
-            insertCircle({href: '#', fa: 'users', color: colors.staff});
+          each categories
+            +categoryCircle
+  
