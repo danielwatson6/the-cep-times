@@ -19,6 +19,3 @@ redirectToArticleIndex = (pause) ->
 
 # Hook to show 404 whenever the object is falsy
 Router.onBeforeAction('dataNotFound', only: 'articleShow')
-
-# Hook to redirect to article index after sign in
-Router.onBeforeAction(redirectToArticleIndex, only: 'admin')
