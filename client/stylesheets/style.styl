@@ -67,16 +67,21 @@ ul.navbar-right
 
 // Carousel declarations
 
+carousel-width = 960px
+carousel-height = 610px
+
 .carousel
-  max-width 960px
+  max-width carousel-width
+  max-height carousel-height
   centerize()
   .carousel-inner .item img
     width 960px
+    max-height 610px
   .carousel-button
     position relative
     top -60px
   .carousel-title
-    text-align left
+    text-align center
     position relative
     top -66px
     color #fff
@@ -84,6 +89,16 @@ ul.navbar-right
     h3
       padding 10px
       font-weight normal
+  .carousel-control
+    background-image none
+    opacity .5
+    .fa
+      position absolute
+      top 50%
+      &.fa-chevron-left
+        right 50%
+      &.fa-chevron-right
+        left 50%   
 
 // Articles
 
