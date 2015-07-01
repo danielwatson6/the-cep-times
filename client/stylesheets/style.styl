@@ -14,18 +14,6 @@ centerize()
   margin-left auto
   margin-right auto
 
-category-circle()
-  width 35px
-  height @width
-  border-radius (@width / 2)
-  behavior url(PIE.htc) // IE8 support
-  text-align center
-  padding-top 10px
-  color #fff
-  opacity 1
-  &:hover
-    opacity 0.7
-
 // Navbar declarations
 
 .navbar
@@ -44,8 +32,6 @@ ul.navbar-right
   a
     padding 10px
     padding-right 0
-    .category-circle
-      category-circle()
 
 // Admin declarations
 
@@ -86,14 +72,14 @@ carousel-height = 610px
     top -60px
   
   .carousel-title
-    text-align center
+    padding-left 20px
     position relative
     top -66px
     color #fff
     opacity 0.8
     h3
       padding 10px
-      font-weight normal
+      font-weight 300
   
   .carousel-control
     background-image none
@@ -111,6 +97,8 @@ carousel-height = 610px
 .article
   
   .article-header
+    width 100%
+    display inline-block
     a.title
       float left
       color #000
@@ -119,8 +107,7 @@ carousel-height = 610px
         font-weight normal
     .category
       float right
-      .category-circle
-        category-circle()
+      margin-top 20px
   
   .author-img
     width 60px
@@ -133,3 +120,20 @@ carousel-height = 610px
   img.carousel-img
     width 100%
     max-height 425px
+
+// Miscellaneous
+
+.category-circle
+  width 35px
+  height @width
+  border-radius (@width / 2)
+  behavior url(PIE.htc) // IE8 support
+  text-align center
+  padding-top 10px
+  color #fff
+  opacity 1
+  &:hover
+    opacity 0.7
+
+.muted
+  color #999
