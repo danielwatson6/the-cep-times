@@ -1,9 +1,9 @@
 template(name="articleItem")
   .article
-    a(href="{{pathFor 'articleShow'}}")
-      h2= title
-    // Image tag is included to allow user to drag image to their desktop
-    .author-img(style="background:url(http://microlancer.lancerassets.com/assets/placeholder/60x60_user_avatar-9430f08439593cd390e188f13919d5e0.png) no-repeat")
-      img(src="http://microlancer.lancerassets.com/assets/placeholder/60x60_user_avatar-9430f08439593cd390e188f13919d5e0.png")
+    .article-header
+      a.title(href="{{pathFor 'articleShow'}}")
+        h2= title
+      .category
+        +categoryCircle(categoryOptions)
     img.carousel-img(src=carouselImage)
     p= content
