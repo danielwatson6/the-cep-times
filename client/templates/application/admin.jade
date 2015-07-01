@@ -1,2 +1,6 @@
 template(name="admin")
-  +loginButtons
+  .admin
+    if currentUser
+      p.lead Successfully signed in.
+    else
+      +loginButtons
