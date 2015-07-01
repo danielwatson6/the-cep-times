@@ -4,7 +4,7 @@
     .append($('<li>')
       .append($('<a>')
         .attr(href: options.href)
-        .append($('<span>')
+        .append($('<div>')
           .css('backgroundColor', options.color)
           .addClass('navbar-circle')
           .addClass('fa')
