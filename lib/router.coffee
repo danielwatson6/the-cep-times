@@ -11,6 +11,13 @@ Router.route '/articles/:_id',
   data: -> Articles.findOne(@params._id)
 Router.route '/admin',
   name: 'admin'
+Router.route '/staff',
+  name: 'staff'
+Router.route '/calendar',
+  name: 'calendar'
+Router.route '/categories/:category',
+  name: 'categories'
+  data: -> {category: @params.category}
 
 redirectToArticleIndex = (pause) ->
   if Meteor.user()

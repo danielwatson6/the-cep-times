@@ -1,0 +1,10 @@
+template(name="categories")
+  .articles.row
+    .col-md-8
+      .category-title(style=backgroundColor)
+        h1= categoryName
+      each articles
+        +articleItem
+      if noArticles
+        p.lead Aún no se han publicado artículos en esta categoría.
+    .col-md-4

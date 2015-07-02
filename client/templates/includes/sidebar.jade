@@ -1,0 +1,8 @@
+template(name="sidebar")
+  .sidebar.hidden-xs.navbar.navbar-fixed-top
+    img(src="/images/logos/sidebar.png")
+    ul
+      each categories
+        li
+          +categoryCircle
+          p.lead= name
