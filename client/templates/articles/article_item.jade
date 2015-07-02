@@ -5,5 +5,8 @@ template(name="articleItem")
         h2= title
       .category
         +categoryCircle(categoryOptions)
-    img.carousel-img(src=carouselImage)
-    p= content
+    p.muted Fecha en Español | por #{author}
+    a(href="{{pathFor 'articleShow'}}")
+      img.carousel-img(src=carouselImage)
+    p= trimmedContent
+    br
