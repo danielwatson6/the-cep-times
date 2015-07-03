@@ -1,8 +1,16 @@
 template(name="sidebar")
-  .sidebar.hidden-xs.navbar.navbar-fixed-top
+  .sidebar.hidden-xs
     img(src="/images/logos/sidebar.png")
     ul
       each categories
         li
           +categoryCircle
           p.lead= name
+  
+  script.
+    // Hack to fix sidebar after it reaches top
+    $(function(){
+      var w = $('.sidebar').width()
+      var h = $('.sidebar').offset().top;
+      trackSidebarScroll(w, h);
+    });
