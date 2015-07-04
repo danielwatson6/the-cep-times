@@ -1,0 +1,24 @@
+template(name="articleNew")
+  h1 New article
+  hr
+  form
+    .form-group
+      label Title
+      input#title.form-control(type="text" placeholder="Title")
+    .form-group
+      label Category
+      select#category.form-control
+        each categories
+          option(value=value)= name
+    .form-group
+      label Carousel image
+      input#carouselImage.form-control(type="url" placeholder="Insert URL" disabled)
+    .form-group
+      label Content
+      textarea(placeholder="Content").form-control
+    br
+    button.btn.btn-primary(type="submit") Post
+    br
+    
+  script.
+    $(trackSelect);
