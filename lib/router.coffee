@@ -21,10 +21,17 @@ Router.route '/categories/:category',
   name: 'categories'
   data: -> {category: @params.category}
 
-redirectToArticleIndex = (pause) ->
-  if Meteor.user()
-    Router.go('articleIndex')
+requireLogin = ->
+  if ! Meteor.user()
+    if Meteor.loggingIn()
+      @render(@loadingTemplate)
+    else
+      @render('accessDenied')
+  else
     @next()
 
 # Hook to show 404 whenever the object is falsy
 Router.onBeforeAction('dataNotFound', only: 'articleShow')
+
+# Hook to require login to access routes
+Router.onBeforeAction(requireLogin, only: ['articleNew'])
