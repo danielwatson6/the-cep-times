@@ -55,6 +55,14 @@ ul.navbar-right
   height 70px
   background-color #333
   
+  .navbar-left
+    padding-top 10px
+    span
+      color #fff
+    a:hover
+      opacity 0.5
+      
+  
   #login-buttons
     margin-top 20px
     a.login-link-text
@@ -145,6 +153,7 @@ ul.navbar-right
 // Sidebar
 
 .sidebar
+  position static
   img
     width 100%
   ul
@@ -155,9 +164,13 @@ ul.navbar-right
         float left
         .category-circle
           category-circle(25px)
+          padding-top 6px
       p.lead
-        margin-left 45px
+        margin-left 35px
         margin-bottom 10px
+  &.sidebar-fixed
+    position fixed
+    top 0
 
 // Miscellaneous
 

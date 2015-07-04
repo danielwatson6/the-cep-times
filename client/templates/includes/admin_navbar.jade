@@ -4,5 +4,8 @@ template(name="adminNavbar")
       // Brand and toggle get grouped for better mobile display
       #collapse-2.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-left
+          li
+            a(href="{{pathFor 'articleNew'}}")
+              span.fa.fa-plus
         ul.nav.navbar-nav.navbar-right
           +loginButtons

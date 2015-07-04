@@ -10,7 +10,8 @@ template(name="sidebar")
   script.
     // Hack to fix sidebar after it reaches top
     $(function(){
-      var w = $('.sidebar').width()
-      var h = $('.sidebar').offset().top;
-      trackSidebarScroll(w, h);
+      var sidebar = $('.sidebar')
+      var w = sidebar.width();
+      var h = sidebar.offset().top;
+      //trackSidebarScroll(w, h);
     });
