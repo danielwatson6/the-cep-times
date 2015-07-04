@@ -6,6 +6,8 @@ Router.configure
 
 Router.route '/',
   name: 'articleIndex'
+Router.route '/articles/new',
+  name: 'articleNew'
 Router.route '/articles/:_id',
   name: 'articleShow'
   data: -> Articles.findOne(@params._id)
