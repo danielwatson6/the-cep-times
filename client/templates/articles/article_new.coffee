@@ -3,7 +3,6 @@ Template.articleNew.helpers
     l = []
     for category of categories
       c = categories[category]
-      # TO-DO: refactor categories.coffee to an array with this value in object
       c.value = category
       if c.isArticleCategory then l.push(c)
     l
@@ -20,10 +19,8 @@ Template.articleNew.events
       content: $(e.target).find('#content').val()
     
     Meteor.call 'insertArticle', article, (error, result) ->
-      if error then alert error.reason
+      if error then alert error.reason # TO-DO: add UI for alert
       Router.go('articleShow', _id: result._id)
-
-# Hack to disable imageURL input when update live is selected
-@trackSelect = ->
-  $('select').change ->
+  
+  'change select': (e) ->
     $('#carouselImage').attr('disabled', $('select').val() is 'live')
