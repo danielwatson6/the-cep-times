@@ -1,2 +1,2 @@
 Template.articleIndex.helpers
-  articles: -> Articles.find()
+  articles: -> Articles.find({}, sort: {submitted: -1})
