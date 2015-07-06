@@ -3,10 +3,18 @@ template(name="articleItem")
     .article-header
       a.title(href="{{pathFor 'articleShow'}}")
         h2= title
-      .category
+      .buttons
+        if currentUser
+          a.edit-btn(href="{{pathFor 'articleEdit'}}")
+            .category-circle.fa.fa-pencil
+          a.delete-btn(href="#")
+            .category-circle.fa.fa-trash-o
         +categoryCircle(categoryOptions)
-    p.muted Fecha en Español | por #{author}
+    p.muted #{date} | por #{author}
     a(href="{{pathFor 'articleShow'}}")
       img.carousel-img(src=carouselImage)
-    p= trimmedContent
     br
+    span.content= trimmedContent
+    a.btn.pull-right.btn-default
+      | Continuar leyendo
+      span.fa.fa-arrow-right
