@@ -11,6 +11,9 @@ Router.route '/articles/new',
 Router.route '/articles/:_id',
   name: 'articleShow'
   data: -> Articles.findOne(@params._id)
+Router.route '/articles/:_id/edit',
+  name: 'articleEdit'
+  data: -> Articles.findOne(@params._id)
 Router.route '/admin',
   name: 'admin'
 Router.route '/staff',
