@@ -11,6 +11,7 @@ Accounts.config
 
 # Only allow the pre-specified users
 Accounts.validateNewUser (user) ->
-  if user.email in allowedEmails
+  console.log user.emails[0].address
+  if user.emails[0].address in allowedEmails
     return true
   throw new Meteor.Error(403, "You do not have permission to create a user.")
