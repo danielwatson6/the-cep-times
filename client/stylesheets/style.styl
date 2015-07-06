@@ -112,6 +112,7 @@ ul.navbar-right
 // Articles
 
 .article
+  margin-bottom 60px
   
   .article-header
     width 100%
@@ -122,11 +123,18 @@ ul.navbar-right
       text-decoration none
       h2
         font-weight normal
-    .category
+    .buttons
       float right
       margin-top 22px
-      .category-circle
-        category-circle(35px)
+      a
+        margin-left 5px
+        .category-circle
+          category-circle(35px)
+      
+      .edit-btn div
+        background-color #3498db
+      .delete-btn div
+        background-color #e74c3c
   
   .author-img
     width 60px
@@ -139,7 +147,11 @@ ul.navbar-right
   img.carousel-img
     width 100%
     max-height 425px
-
+    margin-bottom 20px
+  
+  a.btn
+      margin-top 10px
+  
 // Category tabs' content
 
 .category-title
