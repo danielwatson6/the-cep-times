@@ -6,6 +6,9 @@ template(name="articleNew")
       label Title
       input#title.form-control(type="text" placeholder="Title")
     .form-group
+      label Author
+      input#author.form-control(type="text" placeholder="Author")
+    .form-group
       label Category
       select#category.form-control
         each categories
@@ -15,7 +18,7 @@ template(name="articleNew")
       input#carouselImage.form-control(type="url" placeholder="Insert URL" disabled)
     .form-group
       label Content
-      textarea(placeholder="Content").form-control
+      textarea#content(placeholder="Content").form-control
     br
     button.btn.btn-primary(type="submit") Post
     br
