@@ -19,8 +19,9 @@ Template.articleNew.events
       carouselImage: $(e.target).find('#carouselImage').val()
       content: $(e.target).find('#content').val()
     
-    article._id = Articles.insert(article)
-    Router.go('articleShow', article)
+    Meteor.call 'insertArticle', article, (error, result) ->
+      if error then alert error.reason
+      Router.go('articleShow', _id: result._id)
 
 # Hack to disable imageURL input when update live is selected
 @trackSelect = ->
