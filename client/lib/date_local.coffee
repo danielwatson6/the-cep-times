@@ -13,3 +13,6 @@
       when n is 9 then "octubre"
       when n is 10 then "noviembre"
       when n is 11 then "diciembre"
+  
+  spanishDate: (d) ->
+    "#{d.getDate()} de #{@month(d.getMonth())} de #{d.getFullYear()}"
