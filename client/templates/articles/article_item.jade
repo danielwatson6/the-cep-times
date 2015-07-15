@@ -4,17 +4,18 @@ template(name="articleItem")
       a.title(href="{{pathFor 'articleShow'}}")
         h2= title
       .buttons
-        if currentUser
-          a.edit-btn(href="{{pathFor 'articleEdit'}}")
-            .category-circle.fa.fa-pencil
-          a.delete-btn(href="#")
-            .category-circle.fa.fa-trash-o
         +categoryCircle(categoryOptions)
-    p.muted #{date} | por #{author}
-    a(href="{{pathFor 'articleShow'}}")
-      img.carousel-img(src=carouselImage)
+    p.muted
+      | #{date} | por #{author}
+      if currentUser
+        | | 
+        a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")
+        a.fa.fa-trash-o(href="javascript:void(0)")
+    if hasImage
+      a(href="{{pathFor 'articleShow'}}")
+        img.carousel-img(src=carouselImage)
     br
-    span.content= trimmedContent
+    span.content!= trimmedContent
     a.btn.pull-right.btn-default
       | Continuar leyendo
       span.fa.fa-arrow-right

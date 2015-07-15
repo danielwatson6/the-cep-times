@@ -10,10 +10,17 @@ template(name="articleShow")
           .buttons
             +categoryCircle(categoryOptions)
         p.muted #{date} | por #{author}
-        //- Image tag is included to allow user to drag image to their desktop
-        //- .author-img(style="background:url(http://microlancer.lancerassets.com/assets/placeholder/60x60_user_avatar-9430f08439593cd390e188f13919d5e0.png) no-repeat")
-        //-   img(src="http://microlancer.lancerassets.com/assets/placeholder/60x60_user_avatar-9430f08439593cd390e188f13919d5e0.png")
-        img.carousel-img(src=carouselImage)
-        p= processedContent
+          if currentUser
+            | | 
+            a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")
+            a.fa.fa-trash-o(href="#")
+        //- Author image will be implemented once pictures are available
+        //- .author-img(style="background:url() no-repeat")
+        //-   Image tag is included to allow user to drag image to their desktop
+        //-   img(src="")
+        if hasImage
+          img.carousel-img(src=carouselImage)
+        br
+        p!= processedContent
     .col-md-4
       +sidebar
