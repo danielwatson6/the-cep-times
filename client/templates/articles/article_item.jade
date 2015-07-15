@@ -16,6 +16,6 @@ template(name="articleItem")
         img.carousel-img(src=carouselImage)
     br
     span.content!= trimmedContent
-    a.btn.pull-right.btn-default
+    a.btn.pull-right.btn-default(href="{{pathFor 'articleShow'}}")
       | Continuar leyendo
       span.fa.fa-arrow-right
