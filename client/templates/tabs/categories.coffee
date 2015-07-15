@@ -4,6 +4,6 @@ Template.categories.helpers
   noArticles: ->
     Articles.find(category: @category).count() is 0
   backgroundColor: ->
-    'background-color: #{categories[@category].color}' 
+    'background-color:' + categories[@category].color
   categoryName: ->
     categories[@category].name
