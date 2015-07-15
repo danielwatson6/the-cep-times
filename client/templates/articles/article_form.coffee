@@ -13,7 +13,7 @@ Template.articleForm.events
   'change select': (e) ->
     $('#carouselImage').attr('disabled', $('select').val() is 'live')
 
-# Method to extract data from form
+# Methods for both child templates
 
 getArticleAttributes = (e) ->
   title: $(e.target).find('#title').val()
@@ -22,19 +22,28 @@ getArticleAttributes = (e) ->
   carouselImage: $(e.target).find('#carouselImage').val()
   content: $(e.target).find('#content').val()
 
-# Individual submit actions
+submitCallback = (articleId) ->
+  (error, result) ->
+    if error then alert error.reason # TO-DO: add UI for alert
+    Router.go('articleShow', _id: articleId or result._id)
+
+# Options for articleNew
 
 Template.articleNew.events
   'submit form': (e) ->
     e.preventDefault()
     article = getArticleAttributes(e)
-    
-    Meteor.call 'insertArticle', article, (error, result) ->
-      if error then alert error.reason # TO-DO: add UI for alert
-      Router.go('articleShow', _id: result._id)
+    Meteor.call 'insertArticle', article, submitCallback()
+
+# Options for articleEdit
 
 Template.articleEdit.events
   'submit form': (e) ->
     e.preventDefault()
-    article = getArticleAttributes(e)
-
+    attributes = getArticleAttributes(e)
+    Articles.update @_id, {$set: attributes}, submitCallback(@_id)
+  
+Template.articleEdit.rendered = ->
+  category = @data.category
+  $('select option').each ->
+    $(@).prop('selected', true) if @.value is category
