@@ -1,19 +1,41 @@
-Template.articleItem.helpers
+# Options for both templates specified below
+
+commonArticleHelpers =
   categoryOptions: ->
     categories[@category]
   date: ->
     dateLocal.spanishDate(@submitted)
+  hasImage: ->
+    !! @carouselImage
+
+commonArticleEvents =
+  'click .fa-trash-o': (e) ->
+    if Meteor.user() and confirm("Are you sure you want to
+      destroy this article? This action is irreversible.")
+      Articles.remove(_id: @_id)
+
+# Options for articleItem template
+
+articleItemHelpers = 
   trimmedContent: ->
     "#{@content.substring(0, 400)}..."
-  
-Template.articleShow.helpers
-  categoryOptions: ->
-    categories[@category]
-  date: ->
-    dateLocal.spanishDate(@submitted)
+
+Template.articleItem.helpers(
+  _.extend(commonArticleHelpers, articleItemHelpers))
+
+Template.articleItem.events(commonArticleEvents)
+
+# Options for articleShow template
+
+articleShowHelpers =
   backgroundColor: ->
-    'background-color: #{categories[@category].color}'
+    'background-color:' + categories[@category].color
   categoryName: ->
     categories[@category].name
   processedContent: ->
     @content.replace(/(?:\r\n|\r|\n)/g, '<br />')
+
+Template.articleShow.helpers(
+  _.extend(commonArticleHelpers, articleShowHelpers))
+
+Template.articleShow.events(commonArticleEvents)
