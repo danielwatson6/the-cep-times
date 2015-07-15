@@ -15,19 +15,19 @@ requireUser = (userId, doc) -> !! userId
 
 Meteor.methods
   insertArticle: (attributes) ->
-    # TO-DO: add UI to validation errors
+    ### TO-DO: fix validation
     check(Meteor.userId(), String)
     check(attributes, {
       title: String
       author: String
       category: String
-      carouselImage: String
-      # TO-DO: add proper check for content
+      # TO-DO: add proper check for content and carousel image
     })
+    ###
     
     article = _.extend(attributes, {
       userId: Meteor.user()._id
       submitted: new Date
     })
     
-    return _id: Articles.insert(article)
+    _id: Articles.insert(article)
