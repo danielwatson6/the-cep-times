@@ -1,13 +1,13 @@
-template(name="articleNew")
+template(name="articleForm")
   h1 New article
   hr
   form
     .form-group
       label Title
-      input#title.form-control(type="text" placeholder="Title")
+      input#title.form-control(type="text" placeholder="Title" value=title)
     .form-group
       label Author
-      input#author.form-control(type="text" placeholder="Author")
+      input#author.form-control(type="text" placeholder="Author" value=author)
     .form-group
       label Category
       select#category.form-control
@@ -18,7 +18,13 @@ template(name="articleNew")
       input#carouselImage.form-control(type="url" placeholder="Insert URL" disabled)
     .form-group
       label Content
-      textarea#content(placeholder="Content").form-control
+      textarea#content(placeholder="Content").form-control= content
     br
     button.btn.btn-primary(type="submit") Post
     br
+
+template(name="articleNew")
+  +articleForm
+
+template(name="articleEdit")
+  +articleForm
