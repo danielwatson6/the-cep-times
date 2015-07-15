@@ -13,6 +13,7 @@ commonArticleEvents =
     if Meteor.user() and confirm("Are you sure you want to
       destroy this article? This action is irreversible.")
       Articles.remove(_id: @_id)
+      Router.go('articleIndex')
 
 # Options for articleItem template
 
