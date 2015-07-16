@@ -6,12 +6,3 @@ template(name="sidebar")
         li
           +categoryCircle
           p.lead= name
-  
-  script.
-    // Hack to fix sidebar after it reaches top
-    $(function(){
-      var sidebar = $('.sidebar')
-      var w = sidebar.width();
-      var h = sidebar.offset().top;
-      //trackSidebarScroll(w, h);
-    });
