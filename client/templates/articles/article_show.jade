@@ -9,7 +9,7 @@ template(name="articleShow")
             h2= title
           .buttons
             +categoryCircle(categoryOptions)
-        p.muted #{date} | por #{author}
+        p.text-muted #{date} | por #{author}
           if currentUser
             | | 
             a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")

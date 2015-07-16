@@ -5,7 +5,7 @@ template(name="articleItem")
         h2= title
       .buttons
         +categoryCircle(categoryOptions)
-    p.muted
+    p.text-muted
       | #{date} | por #{author}
       if currentUser
         | | 
