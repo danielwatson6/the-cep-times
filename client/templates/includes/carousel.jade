@@ -14,9 +14,3 @@ template(name="carousel")
     a.right.carousel-control(href="#carousel-1" role="button" data-slide="next")
       span.fa.fa-chevron-right(aria-hidden="true")
       span.sr-only Next
-  
-  script.
-    // Hack: make carousel match screen height
-    var f={height:$(window).height()-60+'px'}
-    var r=function (){$('.carousel-inner .item img').css(f);$('.carousel').css(f)}
-    $(r);
