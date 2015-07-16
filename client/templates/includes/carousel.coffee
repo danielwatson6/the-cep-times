@@ -7,6 +7,7 @@ Template.carousel.helpers
     Articles.find({category: {$not: 'live'}}, {limit: maximumArticles}).map (article, index) ->
       article.isFirst = 'active' if index is 0
       article.styleOptions = "background-color:" + categories[article.category].color
+      article.categoryName = categories[article.category].name
       article
 
 Template.carousel.rendered = ->

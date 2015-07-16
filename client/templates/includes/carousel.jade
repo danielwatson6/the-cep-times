@@ -5,8 +5,7 @@ template(name="carousel")
         .item(class=isFirst)
           img(src=carouselImage)
           .carousel-title(style=styleOptions)
-            h3
-              i= category
+            h3 #{categoryName}
               | | #{title}
     a.left.carousel-control(href="#carousel-1" role="button" data-slide="prev")
       span.fa.fa-chevron-left(aria-hidden="true")
