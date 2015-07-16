@@ -1,6 +1,8 @@
 # Options for parent template
 
 Template.articleForm.helpers
+  formTitle: ->
+    if @_id then "Edit Article" else "New Article"
   categories: ->
     l = []
     for category of categories
