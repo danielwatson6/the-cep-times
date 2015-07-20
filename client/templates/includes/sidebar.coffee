@@ -3,14 +3,22 @@ Template.sidebar.helpers
 
 Template.sidebar.rendered = ->
   sidebar = $('.sidebar')
-  w = sidebar.width()
-  h = sidebar.offset().top
+  # Make width uniform when position type changes
+  sidebar.find('img').css('width', sidebar.width())
   # Compensate for Safari and Chrome rendering bug with
   # fixed position inside elements with relative position.
   # See https://github.com/twbs/bootstrap/issues/12126
   sidebar.parent().css('position', 'static')
-  # Fix sidebar to top once it reaches top of window
-  $(window).scroll ->
-    h = sidebar.offset().top if not sidebar.hasClass('sidebar-fixed')
-    sidebar.toggleClass('sidebar-fixed', $(@).scrollTop() > h)
-           .find('img').css('width', w)
+  affixSidebar = ->
+    if sidebar.height() > $('.articles').height()
+      sidebar.attr('data-spy', '')
+    else
+      # TO-DO: add bottom affix
+      sidebar.affix
+        offset:
+          top: sidebar.offset().top
+  
+  # Since Meteor avoids re-rendering the sidebar even
+  # switching between templates, we check if the affix
+  # is necessary and toggle accordingly.
+  setInterval(affixSidebar, 100)
