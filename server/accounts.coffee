@@ -4,6 +4,7 @@ allowedEmails = [
   'sophiaeleta@gmail.com'
   'christineortiz7@hotmail.com'
   'rada.amira@hotmail.com'
+  'made.diazduru@yahoo.com'
 ]
 
 Accounts.config
