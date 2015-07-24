@@ -1,3 +1,9 @@
+# Only for admins
+restrictedRoutes = [
+  'articleNew'
+  'articleEdit'
+]
+
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
@@ -14,6 +20,8 @@ Router.route '/articles/:_id',
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
   data: -> Articles.findOne(@params._id)
+Router.route '/gallery',
+  name: 'albumIndex'
 Router.route '/admin',
   name: 'admin'
 Router.route '/staff',
@@ -37,4 +45,4 @@ requireLogin = ->
 Router.onBeforeAction('dataNotFound', only: 'articleShow')
 
 # Hook to require login to access routes
-Router.onBeforeAction(requireLogin, only: ['articleNew'])
+Router.onBeforeAction(requireLogin, only: restrictedRoutes)

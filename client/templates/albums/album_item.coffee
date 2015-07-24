@@ -1,0 +1,2 @@
+Template.albumItem.helpers
+  coverPhoto: -> ''
