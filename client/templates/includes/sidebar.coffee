@@ -10,7 +10,7 @@ Template.sidebar.rendered = ->
   # See https://github.com/twbs/bootstrap/issues/12126
   sidebar.parent().css('position', 'static')
   affixSidebar = ->
-    if sidebar.height() > $('.articles').height()
+    if sidebar.height() > ($('.articles').height() or $('.article').height())
       sidebar.attr('data-spy', '')
     else
       # TO-DO: add bottom affix
