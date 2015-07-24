@@ -13,13 +13,9 @@ template(name="articleShow")
           | | 
           a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")
           a.fa.fa-trash-o(href="#")
-      //- Author image will be implemented once pictures are available
-      //- .author-img(style="background:url() no-repeat")
-      //-   Image tag is included to allow user to drag image to their desktop
-      //-   img(src="")
       if hasImage
         img.carousel-img(src=carouselImage)
       br
-      p!= processedContent
+      p.article-content!= processedContent
     .col-md-4
       +sidebar
