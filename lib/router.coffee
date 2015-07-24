@@ -10,6 +10,8 @@ Router.configure
   notFoundTemplate: 'notFound'
   waitOn: -> Meteor.subscribe('articles')
 
+# Articles
+
 Router.route '/',
   name: 'articleIndex'
 Router.route '/articles/new',
@@ -20,17 +22,29 @@ Router.route '/articles/:_id',
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
   data: -> Articles.findOne(@params._id)
-Router.route '/gallery',
-  name: 'albumIndex'
-Router.route '/admin',
-  name: 'admin'
-Router.route '/staff',
-  name: 'staff'
-Router.route '/calendar',
-  name: 'calendar'
 Router.route '/categories/:category',
   name: 'categories'
   data: -> {category: @params.category}
+
+# Gallery
+
+Router.route '/gallery',
+  name: 'albumIndex'
+Router.route '/albums/new',
+  name: 'albumNew'
+Router.route '/albums/:_id',
+  name: 'albumShow'
+Router.route '/albums/:_id/edit',
+  name: 'albumEdit'
+
+# Individual Routes
+
+Router.route '/admin',
+  name: 'admin'
+Router.route '/calendar',
+  name: 'calendar'
+Router.route '/staff',
+  name: 'staff'
 
 requireLogin = ->
   if ! Meteor.user()
