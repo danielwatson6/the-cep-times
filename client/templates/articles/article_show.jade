@@ -1,26 +1,25 @@
 template(name="articleShow")
   .row
-    .col-md-8
+    .col-md-8.article
       .category-title(style=backgroundColor)
         h1= categoryName
-      .article
-        .article-header
-          a.title(href="{{pathFor 'articleShow'}}")
-            h2= title
-          .buttons
-            +categoryCircle(categoryOptions)
-        p.text-muted #{date} | por #{author}
-          if currentUser
-            | | 
-            a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")
-            a.fa.fa-trash-o(href="#")
-        //- Author image will be implemented once pictures are available
-        //- .author-img(style="background:url() no-repeat")
-        //-   Image tag is included to allow user to drag image to their desktop
-        //-   img(src="")
-        if hasImage
-          img.carousel-img(src=carouselImage)
-        br
-        p!= processedContent
+      .article-header
+        a.title(href="{{pathFor 'articleShow'}}")
+          h2= title
+        .buttons
+          +categoryCircle(categoryOptions)
+      p.text-muted #{date} | por #{author}
+        if currentUser
+          | | 
+          a.fa.fa-pencil(href="{{pathFor 'articleEdit'}}")
+          a.fa.fa-trash-o(href="#")
+      //- Author image will be implemented once pictures are available
+      //- .author-img(style="background:url() no-repeat")
+      //-   Image tag is included to allow user to drag image to their desktop
+      //-   img(src="")
+      if hasImage
+        img.carousel-img(src=carouselImage)
+      br
+      p!= processedContent
     .col-md-4
       +sidebar
