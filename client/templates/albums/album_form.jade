@@ -1,0 +1,15 @@
+template(name="albumForm")
+  h2= formTitle
+  form
+    .form-group
+      label Title
+      input#title.form-control(type="text" placeholder="Title" value=title)
+    br
+    button.btn.btn-primary(type="submit") Post
+    br
+
+template(name="albumNew")
+  +albumForm
+
+template(name="albumEdit")
+  +albumForm
