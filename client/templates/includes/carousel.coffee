@@ -11,7 +11,15 @@ Template.carousel.helpers
       article
 
 Template.carousel.rendered = ->
-  # Make carousel match screen height
-  f = height: $(window).height() - 60 + 'px'
-  $('.carousel-inner .item img').css(f)
-  $('.carousel').css(f)
+  img = $('.carousel-inner .item img')
+  $(img).on 'load', ->
+    width = img.width()
+    height = img.height()
+    # Make carousel match screen height and crop to not distort
+    newHeight = $(window).height() - 60
+    newMargin = Math.abs(newHeight - height) / 2 + 38
+    img.css('margin-top', -newMargin + 'px')
+    img.css('margin-bottom', -newMargin + 'px')
+    # Fix caption
+    caption = $('.carousel-title')
+    caption.css('top', parseInt(caption.css('top')) + 76 + 'px')
