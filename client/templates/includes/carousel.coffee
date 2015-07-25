@@ -12,13 +12,14 @@ Template.carousel.helpers
 
 Template.carousel.rendered = ->
   img = $('.carousel-inner .item img')
-  width = img.width()
-  height = img.height()
-  # Make carousel match screen height and crop to not distort
-  newHeight = $(window).height() - 60
-  newMargin = Math.abs(newHeight - height) / 2 + 38
-  img.css('margin-top', -newMargin + 'px')
-  img.css('margin-bottom', -newMargin + 'px')
-  # Fix caption
-  caption = $('.carousel-title')
-  caption.css('top', parseInt(caption.css('top')) + 76 + 'px')
+  $(img).on 'load', ->
+    width = img.width()
+    height = img.height()
+    # Make carousel match screen height and crop to not distort
+    newHeight = $(window).height() - 60
+    newMargin = Math.abs(newHeight - height) / 2 + 38
+    img.css('margin-top', -newMargin + 'px')
+    img.css('margin-bottom', -newMargin + 'px')
+    # Fix caption
+    caption = $('.carousel-title')
+    caption.css('top', parseInt(caption.css('top')) + 76 + 'px')
