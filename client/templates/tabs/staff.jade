@@ -1,3 +1,17 @@
 template(name="staff")
   h2 Staff
-  p ...
+  br
+  .row
+    .col-md-8
+      each categories
+        h3= name
+        each members
+          .media.staff
+            .media-left
+              a(href=hqURL)
+                img.media-object(src=lqURL)
+            .media-body
+              h4.media-heading= name
+              p= bio
+    .col-md-4
+      +sidebar
