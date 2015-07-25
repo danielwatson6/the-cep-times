@@ -8,7 +8,9 @@ Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
-  waitOn: -> Meteor.subscribe('articles')
+  waitOn: ->
+    Meteor.subscribe('articles')
+    Meteor.subscribe('albums')
 
 # Articles
 
@@ -34,8 +36,10 @@ Router.route '/albums/new',
   name: 'albumNew'
 Router.route '/albums/:_id',
   name: 'albumShow'
+  data: -> Albums.findOne(@params._id)
 Router.route '/albums/:_id/edit',
   name: 'albumEdit'
+  data: -> Albums.findOne(@params._id)
 
 # Individual Routes
 
