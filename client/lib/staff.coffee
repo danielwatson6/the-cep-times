@@ -1,5 +1,14 @@
 @staff = [
   {
+    name: "Administradores"
+    members: [
+      {name: "", lqUrl: "", hqURL: "", bio: ""}
+      {name: "", lqUrl: "", hqURL: "", bio: ""}
+      {name: "", lqUrl: "", hqURL: "", bio: ""}
+      {name: "", lqUrl: "", hqURL: "", bio: ""}
+      {name: "", lqUrl: "", hqURL: "", bio: ""}
+  ]}
+  {
     name: "Eventos"
     members: [
       {name: "Valeria Marrone", lqURL: "", hqURL: "", bio: "Mi amor por el sushi y las series es infinito. Estoy obsesionada con los perros, los bebés y Disney.  Me considero una persona leal a mis amigos y muy aventurera. Me uní al periódico porque me gusta estar enterada de todo."}
