@@ -2,7 +2,15 @@
 restrictedRoutes = [
   'articleNew'
   'articleEdit'
+  'albumNew'
+  'albumEdit'
 ]
+
+# Fix for Router.go not working
+# when called in helpers and events
+@navigate = (route, options) ->
+  Meteor.defer ->
+    Router.go(route, options)
 
 Router.configure
   layoutTemplate: 'layout'
@@ -60,7 +68,12 @@ requireLogin = ->
     @next()
 
 # Hook to show 404 whenever the object is falsy
-Router.onBeforeAction('dataNotFound', only: 'articleShow')
+Router.onBeforeAction('dataNotFound', only: [
+  'articleShow'
+  'articleEdit'
+  'albumShow'
+  'albumEdit'
+])
 
 # Hook to require login to access routes
 Router.onBeforeAction(requireLogin, only: restrictedRoutes)
