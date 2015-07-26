@@ -1,3 +1,8 @@
 template(name="albumShow")
   .album-page
     h2= title
+    p.text-muted Publicado el #{date}
+      if currentUser
+        | | 
+        a.fa.fa-pencil(href="{{pathFor 'albumEdit'}}")
+        a.fa.fa-trash-o(href="#")
