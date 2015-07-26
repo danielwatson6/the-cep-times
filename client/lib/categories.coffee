@@ -1,7 +1,7 @@
 # Config file with category colors
 @categories =
   home     : {color: '#f1c40f', name: "Home", href: '/', fa: 'home', isArticleCategory: false}
-  live     : {color: '#e67e22', name: "Update Live", href: '/categories/live', fa: 'flash', isArticleCategory: true}
+  live     : {color: '#e67e22', name: "Live Update", href: '/categories/live', fa: 'flash', isArticleCategory: true}
   debate   : {color: '#e74c3c', name: "Debate Club", href: '/categories/debate', fa: 'gavel', isArticleCategory: true}
   band     : {color: '#9b59b6', name: "Banda", href: '/categories/band', fa: 'music', isArticleCategory: true}
   sports   : {color: '#3498db', name: "Deportes", href: '/categories/sports', fa: 'futbol-o', isArticleCategory: true}
