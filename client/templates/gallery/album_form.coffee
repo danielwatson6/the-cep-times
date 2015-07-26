@@ -1,10 +1,8 @@
 # Options for parent template
 
-Template.albumForm.helpers
-  formTitle: ->
-    if @_id then "Edit Album" else "New Album"
+# Options for albumNew
 
-Template.albumForm.events
+Template.albumNew.events
   'submit form': (e) ->
     e.preventDefault()
     
@@ -13,5 +11,8 @@ Template.albumForm.events
     
     Meteor.call 'insertAlbum', album, (error, result) ->
       if error then alert error.reason
-      console.log result
-      Router.go('albumShow', _id: result._id)
+      Router.go('albumEdit', _id: result._id)
+
+# Options for albumEdit
+
+Template.albumForm.helpers 
