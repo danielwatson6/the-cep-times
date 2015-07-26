@@ -17,6 +17,7 @@ Template.sidebar.rendered = ->
       sidebar.affix
         offset:
           top: sidebar.offset().top
+          bottom: -> (@bottom = $('.footer').outerHeight(true))
   
   # Since Meteor avoids re-rendering the sidebar even
   # switching between templates, we check if the affix
