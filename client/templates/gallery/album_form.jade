@@ -16,8 +16,12 @@ template(name="albumEdit")
       input#title.form-control(type="text" placeholder="Title" value=title)
     .form-group
       label Pictures
-      each pictures
-        +picture
+      .picture-forms
+        each pictures
+          +pictureRef
+      br
+      button.add-picture-form.btn.btn-default(type="button")
+        span.fa.fa-plus
     br
-    button.btn.btn-primary(type="submit") Post
+    button.btn.btn-primary(type="submit") Save
     br
