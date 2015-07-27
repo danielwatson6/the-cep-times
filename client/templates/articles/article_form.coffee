@@ -27,7 +27,7 @@ getArticleAttributes = (e) ->
 submitCallback = (articleId) ->
   (error, result) ->
     if error then alert error.reason # TO-DO: add UI for alert
-    Router.go('articleShow', _id: articleId or result._id)
+    navigate('articleShow', _id: articleId or result._id)
 
 # Options for articleNew
 
