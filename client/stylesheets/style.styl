@@ -138,11 +138,6 @@ ul.navbar-right
   .continue-btn
     margin-top -20px
   
-  // Delete button
-  .fa-trash-o
-    color #f00
-    margin-left 3px
-  
   img.carousel-img
     width 100%
     margin-bottom 20px
@@ -183,10 +178,33 @@ ul.navbar-right
 
 // Gallery
 
-.album
-  background-color #fff
+.albums .album
+  float left
+  opacity 1
+  background-color #ddd
+  .title
+    position relative
+    top -20px
+    margin-top 0
+    margin-bottom -20px
+    color #fff
+    background-color #000
+    opacity 0.75
+    width 100%
+    text-align center
+    display none
   &:hover
-    background-color #f6f6f6
+    opacity 0.8
+    .title
+      display block
+      text-decoration none
+      
+  img
+    width 256px
+
+.pictures img
+  width 256px
+  float left
 
 // Calendar image
 
@@ -198,7 +216,6 @@ ul.navbar-right
 .staff
   img
     width 192px
-  
 
 // Footer
 
@@ -228,3 +245,8 @@ html
 body
   position relative
   height 100%
+
+.fa-trash-o
+  color #f00
+  margin-left 3px
+

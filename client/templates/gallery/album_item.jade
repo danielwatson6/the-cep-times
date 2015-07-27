@@ -1,0 +1,5 @@
+template(name="albumItem")
+  .album
+    a(href="{{pathFor 'albumShow'}}")
+      img(src=coverURL)
+    a.title(href="{{pathFor 'albumShow'}}")= title

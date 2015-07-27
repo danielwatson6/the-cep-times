@@ -1,0 +1,27 @@
+template(name="albumNew")
+  h2 New Album
+  form
+    .form-group
+      label Title
+      input#title.form-control(type="text" placeholder="Title")
+    br
+    button.btn.btn-primary(type="submit") Proceed to add pictures
+    br
+
+template(name="albumEdit")
+  h2 Edit Album
+  form
+    .form-group
+      label Title
+      input#title.form-control(type="text" placeholder="Title" value=title)
+    .form-group
+      label Pictures
+      .picture-forms
+        each pictures
+          +pictureRef
+      br
+      button.add-picture-form.btn.btn-default(type="button")
+        span.fa.fa-plus
+    br
+    button.btn.btn-primary(type="submit") Save
+    br
