@@ -6,3 +6,6 @@ template(name="albumShow")
         | | 
         a.fa.fa-pencil(href="{{pathFor 'albumEdit'}}")
         a.fa.fa-trash-o(href="#")
+    .pictures
+      each pictures
+        +picture
