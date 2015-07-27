@@ -4,5 +4,5 @@ Meteor.publish 'articles', ->
 Meteor.publish 'albums', ->
   Albums.find()
 
-Meteor.publish 'photos', ->
-  Photos.find()
+Meteor.publish 'pictures', ->
+  Pictures.find()

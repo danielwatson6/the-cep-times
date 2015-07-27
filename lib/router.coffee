@@ -16,9 +16,11 @@ Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
-  waitOn: ->
+  waitOn: -> [
     Meteor.subscribe('articles')
     Meteor.subscribe('albums')
+    Meteor.subscribe('pictures')
+  ]
 
 # Articles
 
