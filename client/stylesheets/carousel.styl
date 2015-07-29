@@ -1,0 +1,33 @@
+@import "mixins"
+
+.carousel
+  width 100%
+  centerize()
+  
+  .carousel-inner .item img
+    width 100%
+  
+  .carousel-button
+    position relative
+    top -60px
+  
+  .carousel-title
+    padding-left 20px
+    position relative
+    top -66px
+    color #fff
+    opacity 0.8
+    h3
+      padding 10px
+      font-weight 200
+  
+  .carousel-control
+    background-image none
+    opacity .5
+    .fa
+      position absolute
+      top 50%
+      &.fa-chevron-left
+        right 50%
+      &.fa-chevron-right
+        left 50%

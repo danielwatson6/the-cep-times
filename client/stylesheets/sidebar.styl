@@ -1,0 +1,23 @@
+@import "mixins"
+
+.sidebar
+  img
+    width 100%
+  ul
+    margin-top 10px
+    list-style-type none
+    li
+      a
+        float left
+        .category-circle
+          category-circle(25px)
+          padding-top 6px
+          &.fa-music
+            padding-top 5px
+      p.lead
+        margin-left 35px
+        margin-bottom 5px
+  &.affix
+    top 0
+  &.affix-bottom
+    position relative
