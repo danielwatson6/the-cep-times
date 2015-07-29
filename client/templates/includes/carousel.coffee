@@ -22,4 +22,3 @@ Template.carousel.rendered = ->
     img.css('margin-bottom', -newMargin + 'px')
     # Fix caption
     caption = $('.carousel-title')
-    caption.css('top', parseInt(caption.css('top')) + 76 + 'px')
