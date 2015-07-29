@@ -1,0 +1,41 @@
+@import "mixins"
+
+.article
+  margin-bottom 60px
+  
+  .article-header
+    width 100%
+    display inline-block
+    a.title
+      float left
+      color #000
+      text-decoration none
+      h2
+        font-weight normal
+    .buttons
+      float right
+      margin-top 22px
+      a
+        margin-left 5px
+        .category-circle
+          category-circle(35px)
+  
+  .article-content
+    text-indent 40px
+    text-align justify
+  
+  .continue-btn
+    margin-top -20px
+  
+  img.carousel-img
+    width 100%
+    margin-bottom 20px
+
+// Category tabs' content
+.category-title
+  margin-top 25px
+  width 100%
+  color #fff
+  h1
+    font-weight 300
+    padding 10px
