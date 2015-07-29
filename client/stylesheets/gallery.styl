@@ -1,27 +1,36 @@
-.albums .album
-  float left
-  opacity 1
-  background-color #ddd
-  .title
-    position relative
-    top -20px
-    margin-top 0
-    margin-bottom -20px
-    color #fff
-    background-color #000
-    opacity 0.75
-    width 100%
-    text-align center
-    display none
-  &:hover
-    opacity 0.8
+.albums
+  margin-top 20px
+  .album
+    float left
+    opacity 1
+    background-color #ddd
+    margin 5px
     .title
-      display block
-      text-decoration none
-      
-  img
-    width 256px
+      position relative
+      top -20px
+      margin-top 0
+      margin-bottom -20px
+      color #fff
+      background-color #000
+      opacity 0.75
+      width 100%
+      text-align center
+      display none
+    &:hover
+      opacity 0.8
+      .title
+        display block
+        text-decoration none
 
-.pictures img
-  width 256px
-  float left
+.pictures
+  margin-top 20px
+  .picture
+    float left
+    margin 5px
+ 
+.thumb
+  width 192px
+  height 192px
+  background-position center center
+  background-size cover
+  border 0
