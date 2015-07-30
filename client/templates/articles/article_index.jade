@@ -3,11 +3,11 @@ template(name="articleIndex")
     +carousel
   .row
     .col-md-8.articles
-      if countIsPositive
-        each articles
-          +articleItem
-      else
-        br
-        p.lead Aún no se han publicado artículos.
+      each articles
+        +articleItem
+      if nextPath
+        a.btn.btn-default(href=nextPath)
+          span.fa.fa-plus 
+          | Ver más
     .col-md-4
       +sidebar
