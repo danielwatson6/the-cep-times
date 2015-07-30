@@ -4,6 +4,10 @@ Meteor.publish 'articles', (options) ->
     limit: Number
   Articles.find({}, options)
 
+Meteor.publish 'article', (id) ->
+  check id, String
+  Articles.find(id)
+
 Meteor.publish 'albums', ->
   Albums.find()
 

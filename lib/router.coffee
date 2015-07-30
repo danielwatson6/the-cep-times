@@ -41,6 +41,7 @@ Router.route '/articles/new',
   name: 'articleNew'
 Router.route '/articles/:_id',
   name: 'articleShow'
+  waitOn: -> Meteor.subscribe('article', @params._id)
   data: -> Articles.findOne(@params._id)
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
