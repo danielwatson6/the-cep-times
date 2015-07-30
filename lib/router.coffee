@@ -80,8 +80,8 @@ Router.route '/staff',
     parseInt(@params.articlesLimit) or @increment
   findOptions: ->
     {sort: {submitted: -1}, limit: @articlesLimit()}
-  waitOn: ->
-    Meteor.subscribe('articles', @findOptions())
+  subscriptions: ->
+    @articlesSub = Meteor.subscribe('articles', @findOptions())
   articles: ->
     Articles.find({}, @findOptions())
   data: ->
@@ -89,6 +89,7 @@ Router.route '/staff',
     nextPath = @route.path(articlesLimit: @articlesLimit() + @increment)
     {
       articles: @articles()
+      ready: @articlesSub.ready
       nextPath: if hasMore then nextPath else null
     }
 

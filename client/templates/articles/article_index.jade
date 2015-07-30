@@ -6,8 +6,12 @@ template(name="articleIndex")
       each articles
         +articleItem
       if nextPath
+        hr
         a.btn.btn-default(href=nextPath)
           span.fa.fa-plus 
           | Ver más
+      else
+        unless ready
+          +spinner
     .col-md-4
       +sidebar
