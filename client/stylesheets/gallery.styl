@@ -1,3 +1,5 @@
+@import "mixins"
+
 .albums
   margin-top 20px
   .album
@@ -34,3 +36,14 @@
   background-position center center
   background-size cover
   border 0
+
+.modal
+  width 100%
+  button.close
+    margin-top -12px
+  .modal-dialog
+    width 768px
+    margin-top 30px
+    centerize()
+    .modal-body
+      padding 0

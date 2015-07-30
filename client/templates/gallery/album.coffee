@@ -4,7 +4,10 @@ Template.albumItem.helpers
 
 Template.albumShow.helpers
   date: -> dateLocal.spanishDate(@submitted)
-  pictures: -> Pictures.find(album_id: @_id)
+  pictures: -> Pictures.find(album_id: @_id).map (picture, index) ->
+    picture.index = index
+    picture.isFirst = 'active' if index is 0
+    picture
 
 Template.albumShow.events
   'click .fa-trash-o': (e) ->
