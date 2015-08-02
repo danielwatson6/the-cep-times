@@ -1,11 +1,8 @@
-Meteor.publish 'articles', (options) ->
-  check options,
-    sort: Object,
-    limit: Number
-  Articles.find({}, options)
+Meteor.publish 'articles', (options, queryOptions) ->
+  Articles.find(queryOptions, options)
 
 Meteor.publish 'article', (id) ->
-  check id, String
+  check(id, String)
   Articles.find(id)
 
 Meteor.publish 'albums', ->

@@ -19,6 +19,34 @@ show404 = [
   'albumEdit'
 ]
 
+# Keep both child controllers as DRY as possible
+PaginationController = RouteController.extend
+  increment: articlesLimit
+  # Intended for override
+  queryOptions: -> {}
+  dataOptions: -> {}
+  nextPath: ->
+    @route.path(articlesLimit: @articlesLimit() + @increment)
+  # Pagination
+  articlesLimit: ->
+    parseInt(@params.articlesLimit) or @increment
+  findOptions: ->
+    sort: {submitted: -1}
+    limit: @articlesLimit()
+  subscriptions: ->
+    @articlesSub = Meteor.subscribe('articles', @findOptions(), @queryOptions())
+  articles: ->
+    Articles.find(@queryOptions(), @findOptions())
+  data: ->
+    hasMore = @articles().count() is @articlesLimit()
+    nextPath = @nextPath()
+    console.log hasMore, nextPath
+    _.extend({
+      articles: @articles()
+      ready: @articlesSub.ready
+      nextPath: if hasMore then nextPath else null
+    }, @dataOptions())
+
 # Fix for Router.go not working
 # when called in helpers and events
 @navigate = (route, options) ->
@@ -39,16 +67,29 @@ Router.configure
 
 Router.route '/articles/new',
   name: 'articleNew'
+
 Router.route '/articles/:_id',
   name: 'articleShow'
   waitOn: -> Meteor.subscribe('article', @params._id)
   data: -> Articles.findOne(@params._id)
+
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
   data: -> Articles.findOne(@params._id)
-Router.route '/categories/:category',
+
+@CategoriesController = PaginationController.extend
+  template: 'categories'
+  categoryObject: -> category: @params.category
+  queryOptions: -> @categoryObject()
+  dataOptions: -> @categoryObject()
+  # Using the normal version seems to return
+  # nothing, regardless of input.
+  nextPath: ->
+    newLimit = @articlesLimit() + @increment
+    "/categories/#{@params.category}/#{newLimit}"
+
+Router.route '/categories/:category/:articlesLimit?',
   name: 'categories'
-  data: -> {category: @params.category}
 
 # Gallery
 
@@ -74,25 +115,8 @@ Router.route '/staff',
 
 # Pagination for articles
 
-@ArticleIndexController = RouteController.extend
+@ArticleIndexController = PaginationController.extend
   template: 'articleIndex'
-  increment: articlesLimit
-  articlesLimit: ->
-    parseInt(@params.articlesLimit) or @increment
-  findOptions: ->
-    {sort: {submitted: -1}, limit: @articlesLimit()}
-  subscriptions: ->
-    @articlesSub = Meteor.subscribe('articles', @findOptions())
-  articles: ->
-    Articles.find({}, @findOptions())
-  data: ->
-    hasMore = @articles().count() is @articlesLimit()
-    nextPath = @route.path(articlesLimit: @articlesLimit() + @increment)
-    {
-      articles: @articles()
-      ready: @articlesSub.ready
-      nextPath: if hasMore then nextPath else null
-    }
 
 Router.route '/:articlesLimit?',
   name: 'articleIndex'
