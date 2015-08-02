@@ -1,8 +1,9 @@
 template(name="layout")
-  +navbar
-  if currentUser
-    +adminNavbar
-  .container
-    #main
-      +yield
-  +footer
+  .wrap
+    +navbar
+    if currentUser
+      +adminNavbar
+    .container
+      #main
+        +yield
+    +footer
