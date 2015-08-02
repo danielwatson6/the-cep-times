@@ -1,10 +1,51 @@
-# Only for admins
-restrictedRoutes = [
+# Configuration
+
+# Number of articles per pagination block
+articlesLimit = 5
+
+# Routes only for admins
+restricted = [
   'articleNew'
   'articleEdit'
   'albumNew'
   'albumEdit'
 ]
+
+# Routes to show 404 error
+show404 = [
+  'articleShow'
+  'articleEdit'
+  'albumShow'
+  'albumEdit'
+]
+
+# Keep both child controllers as DRY as possible
+PaginationController = RouteController.extend
+  increment: articlesLimit
+  # Intended for override
+  queryOptions: -> {}
+  dataOptions: -> {}
+  nextPath: ->
+    @route.path(articlesLimit: @articlesLimit() + @increment)
+  # Pagination
+  articlesLimit: ->
+    parseInt(@params.articlesLimit) or @increment
+  findOptions: ->
+    sort: {submitted: -1}
+    limit: @articlesLimit()
+  subscriptions: ->
+    @articlesSub = Meteor.subscribe('articles', @findOptions(), @queryOptions())
+  articles: ->
+    Articles.find(@queryOptions(), @findOptions())
+  data: ->
+    hasMore = @articles().count() is @articlesLimit()
+    nextPath = @nextPath()
+    console.log hasMore, nextPath
+    _.extend({
+      articles: @articles()
+      ready: @articlesSub.ready
+      nextPath: if hasMore then nextPath else null
+    }, @dataOptions())
 
 # Fix for Router.go not working
 # when called in helpers and events
@@ -17,26 +58,38 @@ Router.configure
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
   waitOn: -> [
-    Meteor.subscribe('articles')
+    # Omit articles for pagination
     Meteor.subscribe('albums')
     Meteor.subscribe('pictures')
   ]
 
 # Articles
 
-Router.route '/',
-  name: 'articleIndex'
 Router.route '/articles/new',
   name: 'articleNew'
+
 Router.route '/articles/:_id',
   name: 'articleShow'
+  waitOn: -> Meteor.subscribe('article', @params._id)
   data: -> Articles.findOne(@params._id)
+
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
   data: -> Articles.findOne(@params._id)
-Router.route '/categories/:category',
+
+@CategoriesController = PaginationController.extend
+  template: 'categories'
+  categoryObject: -> category: @params.category
+  queryOptions: -> @categoryObject()
+  dataOptions: -> @categoryObject()
+  # Using the normal version seems to return
+  # nothing, regardless of input.
+  nextPath: ->
+    newLimit = @articlesLimit() + @increment
+    "/categories/#{@params.category}/#{newLimit}"
+
+Router.route '/categories/:category/:articlesLimit?',
   name: 'categories'
-  data: -> {category: @params.category}
 
 # Gallery
 
@@ -60,6 +113,16 @@ Router.route '/calendar',
 Router.route '/staff',
   name: 'staff'
 
+# Pagination for articles
+
+@ArticleIndexController = PaginationController.extend
+  template: 'articleIndex'
+
+Router.route '/:articlesLimit?',
+  name: 'articleIndex'
+    
+# Hooks
+
 requireLogin = ->
   if ! Meteor.user()
     if Meteor.loggingIn()
@@ -69,13 +132,5 @@ requireLogin = ->
   else
     @next()
 
-# Hook to show 404 whenever the object is falsy
-Router.onBeforeAction('dataNotFound', only: [
-  'articleShow'
-  'articleEdit'
-  'albumShow'
-  'albumEdit'
-])
-
-# Hook to require login to access routes
-Router.onBeforeAction(requireLogin, only: restrictedRoutes)
+Router.onBeforeAction('dataNotFound', only: show404)
+Router.onBeforeAction(requireLogin, only: restricted)
