@@ -40,7 +40,6 @@ PaginationController = RouteController.extend
   data: ->
     hasMore = @articles().count() is @articlesLimit()
     nextPath = @nextPath()
-    console.log hasMore, nextPath
     _.extend({
       articles: @articles()
       ready: @articlesSub.ready
