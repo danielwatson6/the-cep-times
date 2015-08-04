@@ -6,7 +6,6 @@ Template.albumShow.helpers
   date: -> dateLocal.spanishDate(@submitted)
   pictures: -> Pictures.find(album_id: @_id).map (picture, index) ->
     picture.index = index
-    picture.isFirst = 'active' if index is 0
     picture
 
 Template.albumShow.events
@@ -15,3 +14,8 @@ Template.albumShow.events
       destroy this article? This action is irreversible.")
       Albums.remove(_id: @_id)
       navigate('albumIndex')
+  'click .thumb': (e) ->
+    index = $(e.target).parent().data('index')
+    items = $('.carousel').find('.item')
+    $(items).removeClass('active')
+    $(items[index]).addClass('active')
