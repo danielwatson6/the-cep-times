@@ -3,7 +3,7 @@ template(name="carousel")
     .carousel-inner(role="listbox")
       each articles
         .item(class=isFirst)
-          img(src=carouselImage)
+          .image(style=imageURL)
           .carousel-title(style=styleOptions)
             h3 #{categoryName}
               | | #{title}

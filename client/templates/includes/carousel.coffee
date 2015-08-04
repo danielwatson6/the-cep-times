@@ -9,16 +9,8 @@ Template.carousel.helpers
       article.styleOptions = "background-color:" + categories[article.category].color
       article.categoryName = categories[article.category].name
       article
+  imageURL: -> "background-image: url(#{@carouselImage})"
 
 Template.carousel.rendered = ->
-  img = $('.carousel-inner .item img')
-  $(img).on 'load', ->
-    width = img.width()
-    height = img.height()
-    # Make carousel match screen height and crop to not distort
-    newHeight = $(window).height() - 60
-    newMargin = Math.abs(newHeight - height) / 2 + 38
-    img.css('margin-top', -newMargin + 'px')
-    img.css('margin-bottom', -newMargin + 'px')
-    # Fix caption
-    caption = $('.carousel-title')
+  height = $(window).height() - $('.navbar-static-top').height()
+  $('.carousel-inner .image').css('height', height + 'px')
