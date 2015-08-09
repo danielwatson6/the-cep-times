@@ -1,5 +1,8 @@
 @import "mixins"
 
+// Width used to toggle between mobile and desktop navbars
+toggle-collapse = 1000px
+
 .navbar
   height 60px
   margin-bottom 0 // Remove spacing between default and admin navbars
@@ -13,10 +16,10 @@
     position relative
     top 3px
     left 5px
-    @media(min-width 1000px)
+    @media(min-width toggle-collapse)
       display none
   
-  @media(max-width 999px)
+  @media(max-width toggle-collapse - 1px)
     .collapse, .collapsing
       position relative
       top 9px
@@ -30,7 +33,7 @@
       max-height 30px
   
   ul.navbar-right
-    @media(max-width 999px)
+    @media(max-width toggle-collapse - 1px)
       margin 0 -15px
       li
         padding 5px
