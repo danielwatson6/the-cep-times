@@ -29,6 +29,6 @@ Template.sidebar.rendered = ->
   carouselImage = $('.carousel-inner .item img')
   if carouselImage.length is 0
     calculateAffix()
-  else
+  # Sidebar is disabled for small screens
+  else if $(window).width() >= 1000
     carouselImage.on 'load', calculateAffix
-  

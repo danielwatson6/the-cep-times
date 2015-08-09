@@ -13,5 +13,6 @@ template(name="navbar")
       #collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           each categories
-            +categoryCircle
-  
+            li
+              +categoryCircle
+              span.lead= name

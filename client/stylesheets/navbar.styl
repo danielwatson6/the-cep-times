@@ -4,20 +4,44 @@
   height 60px
   margin-bottom 0 // Remove spacing between default and admin navbars
   
+  // Mobile settings
+  
+  button.navbar-toggle
+    top 4px
+  
+  span.lead
+    position relative
+    top 3px
+    left 5px
+    @media(min-width 1000px)
+      display none
+  
+  .collapse, .collapsing
+    position relative
+    top 9px
+    border 1px solid #e7e7e7
+    background-color #f8f8f8
+  
   // Logo
   .navbar-brand
     padding-top 15px
     img
       max-height 30px
-
-ul.navbar-right
-  padding-top 10px
   
-  a
-    padding 10px
-    padding-right 0
-    .category-circle
-      category-circle(35px)
+  ul.navbar-right
+    @media(max-width 999px)
+      margin 0 -15px
+      li
+        padding 5px
+        border-bottom 1px solid #f0f0f0
+        a
+          display inline
+    a
+      padding-top 12px
+      padding-left 10px
+      padding-right 0
+      .category-circle
+        category-circle(35px)
 
 .admin-navbar
   border 0
@@ -31,7 +55,6 @@ ul.navbar-right
       color #fff
     a:hover
       opacity 0.5
-      
   
   #login-buttons
     margin-top 20px
