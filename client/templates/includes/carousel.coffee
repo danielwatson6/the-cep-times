@@ -12,5 +12,8 @@ Template.carousel.helpers
   imageURL: -> "background-image: url(#{@carouselImage})"
 
 Template.carousel.rendered = ->
-  height = $(window).height() - $('.navbar-static-top').height()
-  $('.carousel-inner .image').css('height', height + 'px')
+  w = $(window)
+  # Carousel is disabled for smaller screens
+  if w.width() >= 1000
+    height = w.height() - $('.navbar-static-top').height()
+    $('.carousel-inner .image').css('height', height + 'px')
