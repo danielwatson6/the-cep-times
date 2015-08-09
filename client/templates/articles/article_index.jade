@@ -1,6 +1,8 @@
 template(name="articleIndex")
   if showCarousel
     +carousel
+  if showLogo
+    img.mobile-logo(src="/images/logos/sidebar.png")
   .row
     .col-md-8.articles
       each articles
