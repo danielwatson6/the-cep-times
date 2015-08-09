@@ -1,3 +1,3 @@
 # The CEP Times
-Testing URL: [(http://theceptimes.meteor.com/)]
-Production URL: [(http://www.theceptimes.com/)]
+Testing URL: (http://theceptimes.meteor.com)
+Production URL: (http://www.theceptimes.com)
