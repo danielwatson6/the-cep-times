@@ -14,7 +14,7 @@ template(name="articleForm")
           option(value=value)= name
     .form-group
       label Carousel image (recommended width: 1024px)
-      input#carouselImage.form-control(type="url" placeholder="Insert URL" disabled)
+      input#carouselImage.form-control(type="url" placeholder="Insert URL" value=carouselImage disabled)
     .form-group
       label Content
       textarea#content(placeholder="Content").form-control= content

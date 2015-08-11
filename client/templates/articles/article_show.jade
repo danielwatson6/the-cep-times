@@ -16,6 +16,6 @@ template(name="articleShow")
       if hasImage
         img.carousel-img(src=carouselImage)
       br
-      p.article-content!= processedContent
+      .article-content!= processedContent
     .col-md-4
       +sidebar

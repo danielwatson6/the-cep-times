@@ -34,7 +34,11 @@ articleShowHelpers =
   categoryName: ->
     categories[@category].name
   processedContent: ->
-    @content.replace(/(?:\r\n|\r|\n)/g, '<br />')
+    paragraphs = @content.split('\n')
+    result = ""
+    for p in paragraphs
+      result += "<p>#{p}</p>" if p isnt ''
+    result
 
 Template.articleShow.helpers(
   _.extend(commonArticleHelpers, articleShowHelpers))

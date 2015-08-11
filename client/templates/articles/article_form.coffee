@@ -1,3 +1,22 @@
+# Methods for both templates
+
+getArticleAttributes = (e) ->
+  title: $(e.target).find('#title').val()
+  author: $(e.target).find('#author').val()
+  category: $(e.target).find('#category').val()
+  carouselImage: $(e.target).find('#carouselImage').val()
+  content: $(e.target).find('#content').val()
+
+submitCallback = (articleId) ->
+  (error, result) ->
+    if error then alert error.reason # TO-DO: add UI for alert
+    navigate('articleShow', _id: articleId or result._id)
+
+toggleDisabled = ->
+  result = $('select').val() is 'live'
+  console.log result
+  $('#carouselImage').attr('disabled', $('select').val() is 'live')
+
 # Options for parent template
 
 Template.articleForm.helpers
@@ -13,21 +32,7 @@ Template.articleForm.helpers
 
 Template.articleForm.events
   'change select': (e) ->
-    $('#carouselImage').attr('disabled', $('select').val() is 'live')
-
-# Methods for both child templates
-
-getArticleAttributes = (e) ->
-  title: $(e.target).find('#title').val()
-  author: $(e.target).find('#author').val()
-  category: $(e.target).find('#category').val()
-  carouselImage: $(e.target).find('#carouselImage').val()
-  content: $(e.target).find('#content').val()
-
-submitCallback = (articleId) ->
-  (error, result) ->
-    if error then alert error.reason # TO-DO: add UI for alert
-    navigate('articleShow', _id: articleId or result._id)
+    toggleDisabled()
 
 # Options for articleNew
 
@@ -48,4 +53,5 @@ Template.articleEdit.events
 Template.articleEdit.rendered = ->
   category = @data.category
   $('select option').each ->
-    $(@).prop('selected', true) if @.value is category
+    $(@).prop('selected', true) if @value is category
+  toggleDisabled()
