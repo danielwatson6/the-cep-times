@@ -74,6 +74,7 @@ Router.route '/articles/:_id',
 
 Router.route '/articles/:_id/edit',
   name: 'articleEdit'
+  waitOn: -> Meteor.subscribe('article', @params._id)
   data: -> Articles.findOne(@params._id)
 
 @CategoriesController = PaginationController.extend
