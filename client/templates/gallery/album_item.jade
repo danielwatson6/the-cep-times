@@ -2,4 +2,4 @@ template(name="albumItem")
   .album
     a(href="{{pathFor 'albumShow'}}")
       .thumb(style=coverURL)
-    a.title(href="{{pathFor 'albumShow'}}")= title
+    a.title(href="{{pathFor 'albumShow'}}")= processedTitle
