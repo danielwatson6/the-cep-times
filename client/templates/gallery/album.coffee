@@ -1,6 +1,7 @@
 Template.albumItem.helpers
   coverURL: -> 
     "background-image: url(#{Pictures.findOne(album_id: @_id).url})"
+  processedTitle: -> @title.substring(0, 25) + "..."
 
 Template.albumShow.helpers
   date: -> dateLocal.spanishDate(@submitted)
