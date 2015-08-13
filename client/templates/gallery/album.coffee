@@ -19,3 +19,9 @@ Template.albumShow.events
     items = $('.carousel').find('.item')
     $(items).removeClass('active')
     $(items[index]).addClass('active')
+
+Template.albumShow.rendered = ->
+  $('.item img').each (i, img) ->
+    h = $(window).height() - 32
+    $(img).css('max-width', '1024px')
+          .css('max-height', h + 'px')
