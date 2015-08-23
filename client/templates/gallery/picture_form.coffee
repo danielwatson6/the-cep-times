@@ -10,14 +10,14 @@ Template.pictureForm.events
     url = form.find('input').val()
     if @_id
       Pictures.update @_id, $set: {url: url}
-      data = Pictures.findOne(@_id)
     else
       picture =
         url: url
         album_id: Router.current().params._id
-      _id = Pictures.insert(picture)
-      data = Pictures.findOne(_id)
-    UI.renderWithData(Template.pictureRef, data, $('.picture-forms')[0])
+      
+      Meteor.call 'insertPicture', picture, (error, result) ->
+        if error then alert error.reason
+    
     form.remove()
   
   'click .remove-picture': (e) ->

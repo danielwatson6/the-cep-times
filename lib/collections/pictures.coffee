@@ -9,3 +9,12 @@ requireUser = (userId, doc) -> !! userId
   insert: requireUser
   update: requireUser
   remove: requireUser
+
+Meteor.methods
+  insertPicture: (attributes) ->
+    picture = _.extend(attributes, {
+      userId: Meteor.user()._id
+      submitted: new Date
+    })
+    
+    _id: Pictures.insert(picture)
