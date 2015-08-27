@@ -3,8 +3,8 @@ maximumArticles = 3
 
 Template.carousel.helpers
   articles: ->
-    # Exclude update live and add helpers
-    Articles.find({category: {$not: 'live'}}, {sort: {submitted: -1}, limit: maximumArticles}).map (article, index) ->
+    # Exclude update live and articles with no image url, and add helpers
+    Articles.find({category: {$not: 'live'}, carouselImage: {$not: ''}}, {sort: {submitted: -1}, limit: maximumArticles}).map (article, index) ->
       article.isFirst = 'active' if index is 0
       article.styleOptions = "background-color:" + categories[article.category].color
       article.categoryName = categories[article.category].name
