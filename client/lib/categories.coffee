@@ -7,7 +7,6 @@
   sports   : {color: '#3498db', name: "Deportes", href: '/categories/sports/', fa: 'futbol-o', isArticleCategory: true}
   events   : {color: '#1abc9c', name: "Eventos", href: '/categories/events/', fa: 'reorder', isArticleCategory: true}
   clara    : {color: '#2ecc71', name: "CLARA", href: '/categories/clara/', fa: 'leaf', isArticleCategory: true}
-  apcep    : {color: '#9ac93c', name: "APCEP", href: '/categories/apcep/', fa: 'child', isArticleCategory: true}
   calendar : {color: '#f1c40f', name: "Calendario", href: '/calendar', fa: 'calendar-o', isArticleCategory: false}
   gallery  : {color: '#009ffb', name: "Galería", href: '/gallery', fa: 'image', isArticleCategory: false}
   writers  : {color: '#34495e', name: "Writers' Corner", href: '/categories/writers/', fa: 'pencil', isArticleCategory: true}
