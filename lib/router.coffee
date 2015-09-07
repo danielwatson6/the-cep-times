@@ -61,6 +61,7 @@ Router.configure
     # Omit articles for pagination
     Meteor.subscribe('albums')
     Meteor.subscribe('pictures')
+    Meteor.subscribe('notifications')
   ]
 
 # Articles
