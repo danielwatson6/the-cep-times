@@ -1,2 +1,5 @@
 template(name='notification')
-  
+  .alert.alert-info.alert-dismissible(role="alert")
+    button.close(type="button" data-dismiss="alert" aria-label="Close")
+      span(aria-hidden="true") &times;
+    span= message
