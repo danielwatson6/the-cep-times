@@ -10,3 +10,6 @@ Meteor.publish 'albums', ->
 
 Meteor.publish 'pictures', ->
   Pictures.find()
+
+Meteor.publish 'notifications', ->
+  Notifications.find()
