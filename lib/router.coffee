@@ -9,6 +9,7 @@ restricted = [
   'articleEdit'
   'albumNew'
   'albumEdit'
+  'notificationForm'
 ]
 
 # Routes to show 404 error
@@ -60,6 +61,7 @@ Router.configure
     # Omit articles for pagination
     Meteor.subscribe('albums')
     Meteor.subscribe('pictures')
+    Meteor.subscribe('notifications')
   ]
 
 # Articles
@@ -108,6 +110,8 @@ Router.route '/albums/:_id/edit',
 
 Router.route '/admin',
   name: 'admin'
+Router.route '/notifications',
+  name: 'notificationForm'
 Router.route '/calendar',
   name: 'calendar'
 Router.route '/staff',
