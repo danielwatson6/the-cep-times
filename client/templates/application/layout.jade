@@ -3,6 +3,8 @@ template(name="layout")
     +navbar
     if currentUser
       +adminNavbar
+    if showNotification
+      +notification
     .container
       #main
         +yield
