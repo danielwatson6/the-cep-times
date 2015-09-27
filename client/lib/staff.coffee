@@ -22,7 +22,6 @@
     name: "Calendario"
     members: [
       {name: "María Gabriela Goti", lqURL: "https://www.dropbox.com/s/h0sqadooiwl8n17/IMG_5924%20copy.jpg?dl=0&raw=1", hqURL: "https://www.dropbox.com/s/zrdoonstzztbpcf/IMG_5924%20copy.jpg?dl=0&raw=1", bio: "Nací el 7 de diciembre de 1997. Tengo 17 años. Estoy en sexto año.  Me gusta viajar y el arte. Soy parte de la comunidad Sapientia Dei."}
-      {name: "Carelis Rodriguez", lqURL: "https://www.dropbox.com/s/054j1uyj8szm5eq/IMG_5925%20copy.jpg?dl=0&raw=1", hqURL: "https://www.dropbox.com/s/68h5i6pd0l0a5ry/IMG_5925%20copy.jpg?dl=0&raw=1", bio: "Hola! Nací en New Jersey el 19 de agosto, 1998. Me encanta leer, mi saga favorita es Harry Potter. Me encanta escuchar música, algunas de mis bandas favoritas son All Time Low y Paramore. En un futuro cercano, planeo estudiar algo que tenga que ver con la literatura."}
   ]}
   {
     name: "Writers' Corner"
