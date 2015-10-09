@@ -112,6 +112,7 @@ Router.route '/admin',
   name: 'admin'
 Router.route '/notifications',
   name: 'notificationForm'
+  data: -> Notifications.findOne()
 Router.route '/calendar',
   name: 'calendar'
 Router.route '/staff',
