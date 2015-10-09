@@ -3,7 +3,11 @@ template(name="notificationForm")
   form
     .form-group
       label Notification message
-      input.form-control(type="text" value=message)
-      br
-      button.btn.btn-primary(type="submit") Save
-      br
+      input#message.form-control(type="text" value=message)
+    .form-group
+      label Icon
+        | (<a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/">see all available icons</a>)
+      input#icon.form-control(type="text" value=icon)
+    br
+    button.btn.btn-primary(type="submit") Save
+    br

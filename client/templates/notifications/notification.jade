@@ -3,4 +3,6 @@ template(name='notification')
     #notification.alert.alert-info.alert-dismissible(role="alert")
       button.close(type="button" data-dismiss="alert" aria-label="Close")
         span(aria-hidden="true") &times;
+      if icon
+        span.fa(class=icon)
       span= message
