@@ -2,6 +2,9 @@ Template.notification.helpers
   message: ->
     n = Notifications.findOne()
     if n then n.message else ''
+  icon: ->
+    n = Notifications.findOne()
+    if n and n.icon then 'fa-' + n.icon else ''
 
 updateSession = (e) ->
   Session.set('notificationClosed', true)
