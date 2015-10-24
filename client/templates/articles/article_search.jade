@@ -1,0 +1,19 @@
+template(name="articleSearch")
+  if showLogo
+    img.mobile-logo(src="/images/logos/sidebar.png")
+  .row
+    .col-md-8.articles
+      each articles
+        +articleItem
+      if noArticles
+        p.lead No se han encontrado artículos para esta búsqueda.
+      if nextPath
+        hr
+        a.btn.btn-default(href=nextPath)
+          span.fa.fa-plus 
+          | Ver más
+      else
+        unless ready
+          +spinner
+    .col-md-4
+      +sidebar
