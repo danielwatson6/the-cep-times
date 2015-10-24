@@ -30,7 +30,7 @@ PaginationController = RouteController.extend
     @route.path(articlesLimit: @articlesLimit() + @increment)
   # Pagination
   articlesLimit: ->
-    parseInt(@params.articlesLimit) or @increment
+    parseInt(@params.query.limit) or @increment
   findOptions: ->
     sort: {submitted: -1}
     limit: @articlesLimit()
@@ -88,10 +88,26 @@ Router.route '/articles/:_id/edit',
   # nothing, regardless of input.
   nextPath: ->
     newLimit = @articlesLimit() + @increment
-    "/categories/#{@params.category}/#{newLimit}"
+    "/categories/#{@params.category}?limit=#{newLimit}"
 
-Router.route '/categories/:category/:articlesLimit?',
+@ArticleSearchController = PaginationController.extend
+  template: 'articleSearch'
+  # TO-DO: implement OR with tags
+  queryObj: ->
+    title: {$regex: ".*#{@params.query.q}.*", $options: 'i'}
+  queryOptions: -> @queryObj()
+  dataOptions: -> @queryObj()
+  # Using the normal version seems to return
+  # nothing, regardless of input.
+  nextPath: ->
+    newLimit = @articlesLimit() + @increment
+    "/search?q=#{@params.query.q}&limit=#{newLimit}"
+
+Router.route '/categories/:category',
   name: 'categories'
+
+Router.route '/search',
+  name: 'articleSearch'
 
 # Gallery
 
@@ -122,10 +138,13 @@ Router.route '/staff',
 
 @ArticleIndexController = PaginationController.extend
   template: 'articleIndex'
+  nextPath: ->
+    newLimit = @articlesLimit() + @increment
+    "/?limit=#{newLimit}"
 
-Router.route '/:articlesLimit?',
+Router.route '/',
   name: 'articleIndex'
-    
+
 # Hooks
 
 requireLogin = ->

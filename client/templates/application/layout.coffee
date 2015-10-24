@@ -1,6 +1,5 @@
 Template.layout.helpers
   showNotification: ->
-    console.log Session.get('notificationClosed')
     n = Notifications.findOne()
     # Account for empty DB
     if not n
